@@ -71,8 +71,8 @@ default_Source = function(x){
   }
 }
 # Wrapper function for Shiny-phyloseq D3 Network definition.
-sps_D3_network = function(standAlone=FALSE, parentElement="#D3Network", file=NULL){
-  d3Network::d3ForceNetwork(
+sps_D3_network = function(){
+  forceNetwork(
     Links = calculate_links_data()$link, 
     Nodes = calculate_links_data()$node,
     Source = "Source",
@@ -83,21 +83,17 @@ sps_D3_network = function(standAlone=FALSE, parentElement="#D3Network", file=NUL
     width = input$width_d3,
     Group = default_Source(input$color_d3),
     linkColour = input$d3_link_color,
-    opacity = input$d3_opacity,
-    parentElement = parentElement,
-    standAlone = standAlone,
-    d3Script = "d3.v3.min.js",
-    file=file
+    opacity = input$d3_opacity
   )
 }
 # Send to in-panel element.
-output$D3Network <- renderPrint({
+output$D3Network <- renderForceNetwork({
   sps_D3_network()
 })
 # Downloadable standalone HTML file.
 content_d3 = function(file){
   return(
-    sps_D3_network(standAlone=TRUE, parentElement="body", file=file)
+    saveNetwork(sps_D3_network(), file=file, selfcontained=TRUE)
   )
 }
 output$download_D3 <- downloadHandler(filename = function(){paste0("d3_", simpletime(), ".html")},

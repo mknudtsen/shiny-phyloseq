@@ -161,7 +161,7 @@ headerTagList = list(
 ################################################################################
 # Define the full user-interface, `ui`
 ################################################################################
-ui = navbarPage(
+ui = navbarPage(theme = shinytheme("cosmo"),
   title = h4(a(href="http://joey711.github.io/shiny-phyloseq/", style="color:#F0F0F0",  "Shiny-phyloseq")),
   tabPanel("Select Dataset", datapage),
   tabPanel("Filter", filterpage),
@@ -178,7 +178,7 @@ ui = navbarPage(
   tabPanel("Provenance", provpage),
   header = headerTagList,
   collapsable = TRUE,
-  theme = "bootstrap.css",
+  #theme = "bootstrap.css",
   windowTitle = "Shiny-phyloseq"
 )
 shinyUI(ui)

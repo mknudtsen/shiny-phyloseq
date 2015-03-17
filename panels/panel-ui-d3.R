@@ -66,7 +66,7 @@ d3netpage = fluidPage(
   # Sidebar with a slider input for node opacity
   sbp_d3,
   # Show network graph
-  mainPanel(htmlOutput("D3Network")),
+  mainPanel(forceNetworkOutput("D3Network")),
   fluidRow(column(width = 12,
                   includeMarkdown("panels/paneldoc/d3Network.md")
   ))

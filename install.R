@@ -22,9 +22,9 @@ download_not_installed = function(x){
     }
   }
 }
-vanilla_install_pkgs = c("data.table", "d3Network", "genefilter", "ggplot2",
+vanilla_install_pkgs = c("data.table", "networkD3", "genefilter", "ggplot2",
                          "grid", "gridExtra", "markdown", "png", 
-                         "rmarkdown", "RColorBrewer", "scales")
+                         "rmarkdown", "RColorBrewer", "scales", "shinythemes")
 download_not_installed(vanilla_install_pkgs)
 ################################################################################
 # Should use latest GitHub version of shiny
